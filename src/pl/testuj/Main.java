@@ -1,13 +1,16 @@
 package pl.testuj;
 
-import pl.testuj.oop.Animal;
-import pl.testuj.oop.Cat;
-import pl.testuj.oop.Dog;
-import pl.testuj.oop.Elephant;
+import pl.testuj.access.Person;
+import pl.testuj.oop.*;
 
 public class Main {
 
     public static void main(String[] args) {
+        Person student = new Person();
+        String x = student.getFirstname();
+
+        pl.testuj.access.Dog pies = new pl.testuj.access.Dog();
+
 	// Animal animal = new Animal(); -> klasa Animal jest abstrakcyjna, więc nie mogę stworzyć jej instancji
 
         Cat cat = new Cat();
@@ -15,6 +18,10 @@ public class Main {
         Dog dog = new Dog();
 
         Dog dog2 = new Dog();
+
+        // w polimorfizimie mamy dostęp tylko do metod, które są w klasie bazowej lub interfejsie, który implementujemy
+        Petable petable = new Dog();
+        petable.printMsg();
 
         System.out.println("---------");
 
@@ -36,6 +43,15 @@ public class Main {
         }
 
         System.out.println("Koniec pętli animals");
+
+        System.out.println("------POLIMORFIZM-----");
+        Dog dogPolimorfizm = new Dog(); // mam dostęp do metod z klasy dog + klasy abstrakcyjnej + w interfejsie
+        dogPolimorfizm.eat();
+
+        Animal animalPolimorfizm = new Dog(); // mogę wywołać tylko metody, które są w klasie abstrakcyjnej
+
+        Petable petablePolimorfizm = new Dog(); // mogę wywołać tylko metody, które są w interfejsie
+
     }
 
     public static void displayText(Animal animal) {
