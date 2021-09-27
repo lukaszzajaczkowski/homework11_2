@@ -14,4 +14,9 @@ public class Dog extends Animal {
     public int getAge(int x) {
         return 0;
     }
+
+    @Override
+    public String getAnimalVoice() {
+        return AnimalVoice.DOG.getText();
+    }
 }

@@ -12,6 +12,8 @@ public abstract class Animal {
 
     public abstract int getAge(int x);
 
+    public abstract String getAnimalVoice();
+
     public String getName() {
         return name;
     }
