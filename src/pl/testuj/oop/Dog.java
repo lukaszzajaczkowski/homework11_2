@@ -1,7 +1,12 @@
 package pl.testuj.oop;
 
 public class Dog extends Animal implements Petable, Runnable {
+    private static int count = 0;
+
+    private int age;
+
     public Dog() {
+        count++;
         System.out.println("Konstruktor klasy Dog");
     }
 
@@ -32,5 +37,15 @@ public class Dog extends Animal implements Petable, Runnable {
     @Override
     public void run() {
         // implementacja metody z Runnable
+    }
+
+    public int getCount() {
+        age = count;
+        return count;
+    }
+
+    public static int getNumCount() {
+
+        return count;
     }
 }
