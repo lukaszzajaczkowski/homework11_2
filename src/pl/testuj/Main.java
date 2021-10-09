@@ -29,8 +29,10 @@ public class Main {
         animalName[3] = "Adam";
 
         String filePath = System.getProperty("user.dir") + "\\names_base.txt";
-        writeToFile(filePath, animalName[3]);
-        readFromFile(filePath);
+        for (int i = 0; i < animalName.length; i++) {
+            writeToFile(filePath, animalName[i]);
+            readFromFile(filePath);
+        }
 
 
        /* Animals.add("Krokodyl");
