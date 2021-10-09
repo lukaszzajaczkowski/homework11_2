@@ -3,6 +3,11 @@ package pl.testuj;
 import pl.testuj.oop.Animal;
 
 import java.util.*;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.util.Scanner;
 
 public class Main {
 
@@ -13,9 +18,22 @@ public class Main {
         //b. stworzyć zbiór: dodać imiona zwierząt z listy (stworzonej podpunkcie a)
         //c. stworzyć mapę: klucz to imię zaś wartość to obiekt. Następnie przejdź pętlą i wyświetl informacje o obiekcie
 
-        List<String> Animals = new ArrayList<String>();
+       // List<String> Animals = new ArrayList<String>();
 
-        Animals.add("Krokodyl");
+        // ZADANIE DOMOWE: dodaj zapis i odczyt imion zwierząt do/z pliku
+
+        String[] animalName = new String[4];
+        animalName[0] = "Maciek";
+        animalName[1] = "Dominik";
+        animalName[2] = "Daniel";
+        animalName[3] = "Adam";
+
+        String filePath = System.getProperty("user.dir") + "\\names_base.txt";
+        writeToFile(filePath, animalName[3]);
+        readFromFile(filePath);
+
+
+       /* Animals.add("Krokodyl");
         Animals.add("Tygrys");
         Animals.add("Kaczka");
 
@@ -43,12 +61,45 @@ public class Main {
         System.out.println(AnimalWithName);
 
 
-        for (int i = 0; i < AnimalWithName.size(); i++);
+        for (int i = 0; i < AnimalWithName.size(); i++) ;
         System.out.println(AnimalWithName.values());
-        System.out.println(AnimalWithName.keySet());
+        System.out.println(AnimalWithName.keySet()); */
+    }
+        public static void writeToFile (String filePath, String name){
+            FileWriter fileWriter = null;
+            try {
+                fileWriter = new FileWriter(filePath, true);
+                fileWriter.write(name + "\n");
+            } catch (IOException e) {
+                System.out.println("Błąd zapisu do pliku");
+                e.printStackTrace();
+            } finally {
+                try {
+                    fileWriter.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
 
+        public static void readFromFile (String filePath){
+            File file = new File(filePath);
+            Scanner scanner = null;
 
-
+            try {
+                scanner = new Scanner(file);
+                while (scanner.hasNextLine()) {
+                    String line = scanner.nextLine();
+                    System.out.println(line);
+                }
+            } catch (FileNotFoundException e) {
+                e.printStackTrace();
+            } finally {
+                if (scanner != null) {
+                    scanner.close();
+                }
+            }
+        }
 
 
 //        System.out.println(Person.PI);
@@ -107,7 +158,6 @@ public class Main {
 //
 //        Petable petablePolimorfizm = new Dog(); // mogę wywołać tylko metody, które są w interfejsie
 
+
     }
 
-
-}
